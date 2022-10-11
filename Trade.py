@@ -1,4 +1,7 @@
-import investpy
+from cProfile import label
+from turtle import color
+import  matplotlib.pyplot as plt
+import yfinance as yf
 import pandas as pd
 import datetime as dt
 
@@ -11,7 +14,7 @@ from tensorflow.python.keras.layers import Dense, Dropout, LSTM
 # from tensorflow.python.keras.optimizers import Adam
 from tensorflow.python.keras.metrics import Accuracy
 from tensorflow.python.keras import models
-import yfinance as yf
+
 import matplotlib.pyplot as plt
 
 start = '01/06/2009'
@@ -20,9 +23,9 @@ test_size = 60
 pre_day = 30
 company = 'PLC'
 crypto = 'bitcoin'
-# df = investpy.get_stock_historical_data(stock=company, country='VietNam', from_date=start, to_date=end)
+df = investpy.get_stock_historical_data(stock=company, country='VietNam', from_date=start, to_date=end)
 # df = investpy.get_crypto_historical_data(crypto=crypto, from_date=start, to_date=end)
-df=yf.download(tickers=company,country='VietNam', from_date=start, to_date=end)
+
 df = pd.DataFrame(df)
 
 df['H-L'] = df['High'] - df['Low']
